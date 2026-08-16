@@ -1,0 +1,5 @@
+npm notice run scrape-verse-edge-worker@1.0.0 start
+npm notice run node server.js
+Edge worker listening on port 4000
+Allowed origins: https://scrape-verse.vercel.app, http://localhost:3000
+[2026-08-15T13:46:38.627Z] GET /api/health origin=(none)

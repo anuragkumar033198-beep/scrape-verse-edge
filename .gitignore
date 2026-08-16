@@ -1,0 +1,3 @@
+termux-backend/.env
+termux-backend/node_modules/
+vercel-frontend/node_modules/

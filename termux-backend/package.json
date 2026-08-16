@@ -1,0 +1,23 @@
+{
+  "name": "scrape-verse-edge-worker",
+  "version": "1.0.0",
+  "description": "Termux edge worker: self-healing scraper with LLM-assisted selector repair, exposed over Socket.io + REST.",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "tunnel": "node tunnel.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "localtunnel": "^2.0.2",
+    "puppeteer-core": "^23.5.0",
+    "socket.io": "^4.7.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
