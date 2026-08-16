@@ -1,6 +1,7 @@
 "use strict";
 
 const puppeteer = require("puppeteer-core");
+const { runCollector: runBrightDataCollector } = require("./brightdata");
 const cheerio = require("cheerio");
 
 /* ===========================================================
@@ -321,18 +322,61 @@ async function runScrapeJob(options, emit) {
         }
       }
 
-      if (matched) {
-        const records = await extractRecords(page, usedSelector);
+if (matched) {
         emit({
-          type: "ok",
-          message: `Selector "${usedSelector}" matched ${records.length} record(s).`,
-          recordsFound: records.length,
-          sessionState: "complete",
+          type: "info",
+          message: `Local probe confirmed selector "${usedSelector}". Triggering Bright Data Scraper Studio for production extraction...`,
         });
+
+        const brightDataToken = process.env.BRIGHTDATA_API_TOKEN;
+        const brightDataCollector = process.env.BRIGHTDATA_COLLECTOR_ID;
+        let records;
+
+        if (brightDataToken && brightDataCollector) {
+          try {
+            records = await runBrightDataCollector({
+              apiToken: brightDataToken,
+              collectorId: brightDataCollector,
+              url: targetUrl,
+              selector: usedSelector,
+            });
+            emit({
+              type: "ok",
+              message: `Bright Data Scraper Studio returned ${records.length} record(s).`,
+              recordsFound: records.length,
+              sessionState: "complete",
+            });
+          } catch (err) {
+            emit({
+              type: "err",
+              message: `Bright Data extraction failed: ${err.message}. Falling back to local extraction.`,
+            });
+            records = await extractRecords(page, usedSelector);
+            emit({
+              type: "ok",
+              message: `Local fallback: selector "${usedSelector}" matched ${records.length} record(s).`,
+              recordsFound: records.length,
+              sessionState: "complete",
+            });
+          }
+        } else {
+          emit({
+            type: "warn",
+            message:
+              "BRIGHTDATA_API_TOKEN / BRIGHTDATA_COLLECTOR_ID not set in .env — using local extraction only.",
+          });
+          records = await extractRecords(page, usedSelector);
+          emit({
+            type: "ok",
+            message: `Selector "${usedSelector}" matched ${records.length} record(s).`,
+            recordsFound: records.length,
+            sessionState: "complete",
+          });
+        }
+
         await browser.close();
         return { success: true, selector: usedSelector, records };
       }
-
       emit({
         type: "warn",
         message: `No candidate selector matched. Requesting a healed selector from ${llmProvider}.`,
