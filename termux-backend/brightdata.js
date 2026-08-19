@@ -74,8 +74,18 @@ async function pollForResult({ apiToken, snapshotId }) {
       throw new Error(`Bright Data dataset fetch failed (${res.status}): ${text}`);
     }
 
-    const data = await res.json();
-    return Array.isArray(data) ? data : [data];
+const rawText = await res.text();
+let data;
+
+try {
+  // Try standard JSON first
+  data = JSON.parse(rawText);
+} catch (e) {
+  // Fallback to NDJSON (Newline Delimited JSON)
+  data = rawText.trim().split('\n').map(line => JSON.parse(line));
+}
+
+return Array.isArray(data) ? data.flat() : [data];
   }
 
   throw new Error(

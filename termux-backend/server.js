@@ -3,6 +3,7 @@
 require("dotenv").config();
 
 const express = require("express");
+const fs = require("fs");
 const cors = require("cors");
 const http = require("http");
 const { Server } = require("socket.io");
@@ -106,22 +107,52 @@ app.post("/api/scrape", async (req, res) => {
     }
 
     const jobId = crypto.randomUUID();
+
+    let effectiveProvider = llmProvider === "gemini" ? "gemini" : "openai";
+    if (effectiveProvider === "openai" && !process.env.OPENAI_API_KEY && process.env.GEMINI_API_KEY) {
+      effectiveProvider = "gemini";
+    } else if (effectiveProvider === "gemini" && !process.env.GEMINI_API_KEY && process.env.OPENAI_API_KEY) {
+      effectiveProvider = "openai";
+    }
+
     res.json({ jobId, status: "accepted" });
 
     emitEvent({ type: "info", message: `Job ${jobId} accepted for ${targetUrl}`, sessionState: "queued" });
+    if (effectiveProvider !== (llmProvider === "gemini" ? "gemini" : "openai")) {
+      emitEvent({
+        type: "warn",
+        message: `Requested healing model has no API key configured; falling back to ${effectiveProvider}.`,
+      });
+    }
 
     runScrapeJob(
       {
         targetUrl,
         seedSelector: seedSelector || null,
         systemPrompt: systemPrompt || null,
-        llmProvider: llmProvider === "gemini" ? "gemini" : "openai",
+        llmProvider: effectiveProvider,
         maxRetries: Number.isFinite(Number(maxRetries)) ? Math.max(1, Math.min(10, Number(maxRetries))) : 3,
       },
       emitEvent
-    ).catch((err) => {
-      emitEvent({ type: "err", message: `Job ${jobId} crashed: ${err.message}`, sessionState: "error" });
-    });
+    )
+      .then((result) => {
+        if (result && result.success) {
+          const outPath = require("path").join(__dirname, "last-result.json");
+          const payload = {
+            jobId,
+            targetUrl,
+            selector: result.selector,
+            recordCount: result.records.length,
+            completedAt: new Date().toISOString(),
+            records: result.records,
+          };
+          fs.writeFileSync(outPath, JSON.stringify(payload, null, 2));
+          console.log(`Saved structured output to ${outPath} (${result.records.length} record(s)).`);
+        }
+      })
+      .catch((err) => {
+        emitEvent({ type: "err", message: `Job ${jobId} crashed: ${err.message}`, sessionState: "error" });
+      });
   } catch (err) {
     console.error("Unhandled /api/scrape error:", err);
     if (!res.headersSent) {
@@ -129,7 +160,6 @@ app.post("/api/scrape", async (req, res) => {
     }
   }
 });
-
 app.use((req, res) => {
   res.status(404).json({ error: "Not found." });
 });
