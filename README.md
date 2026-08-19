@@ -16,9 +16,9 @@ Built for **Into the Scrape-Verse 2026**.
 
 - [x] Public source-code repository (this repo)
 - [x] Clear README (this file)
-- [x] Uses Bright Data Scraper Studio to create and run a custom scraper — see [How Bright Data Is Used](#-how-bright-data-scraper-studio-is-used)
-- [ ] Demo video — [add your link here](#-demo-video)
-- [ ] Structured output examples — [add yours here](#-example-structured-output)
+- [x] Uses Bright Data Scraper Studio to create and run a custom scraper
+- [x] Demo video 
+- [x] Structured output examples
 
 ---
 
@@ -102,7 +102,7 @@ BRIGHTDATA_COLLECTOR_ID=c_your_collector_id
 ## 🎥 Demo video
 
 
-[▶️ Watch the demo](#)
+[▶️ Watch the demo](https://youtu.be/9fXfVC2laRM)
 
 ## 📊 Example structured output
 
@@ -110,9 +110,255 @@ BRIGHTDATA_COLLECTOR_ID=c_your_collector_id
 ```json
 [
   {
-    "example": "replace this block with real output from your run"
+  "jobId": "83392acc-3edc-42e3-b86e-34db4760ea1b",
+  "targetUrl": "https://news.ycombinator.com",
+  "selector": "tr.athing",
+  "recordCount": 30,
+  "completedAt": "2026-08-17T08:19:18.886Z",
+  "records": [
+    {
+      "text": "Qwen 3.8 27B is excellent, but it defaults to overthinking things",
+      "href": "https://simonwillison.net/2026/Aug/16/qwen-38-27b/",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "GIMP Development Update",
+      "href": "https://www.gimp.org/news/2026/08/16/dev-update-august-2026/",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "A third world engineer responds to “RISC-V: They should have known better”",
+      "href": "https://rvembedded.com/blog_post/12/",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "On A.I. regulation and messaging",
+      "href": "https://twitter.com/DarioAmodei/status/2088758816376807762",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "Linear algebra done right",
+      "href": "https://linear.axler.net/",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "Anthropic's 'Watermark' Text Adulteration in Claude Is a Perversion of Writing",
+      "href": "https://daringfireball.net/2026/08/anthropics_watermark_text_adulteration_in_claude_is_a_perversion_of_writing",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "Reticulum – Decentralized Mesh Network",
+      "href": "https://reticulum.network/",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "Claude: System Prompts",
+      "href": "https://platform.claude.com/docs/en/release-notes/system-prompts",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "AGI-64 Brings Sierra Adventures to the Commodore 64",
+      "href": "https://meanhamster.com/news/agi-64-brings-sierra-adventures-to-the-commodore-64",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "Show HN: Vocal Slice – Cut audio by selecting text, fully on-device",
+      "href": "https://vocalslice.com/",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "Rhombus 1.1 is now available",
+      "href": "https://blog.racket-lang.org/2026/08/rhombus-v1.1.html",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "Gakutensoku",
+      "href": "https://en.wikipedia.org/wiki/Gakutensoku",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "Low-Tech Ceramic Water Filter",
+      "href": "https://wiki.lowtechlab.org/wiki/Filtre_%C3%A0_eau_c%C3%A9ramique/en",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "How do I permanently disable random Google Photos popup to backup photos? (2024)",
+      "href": "https://support.google.com/photos/thread/256212140/how-do-i-permanently-disable-google-photos-pop-up-prompt-to-backup-my-photos-i?hl=en",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "SIMD in the 90s: Programming Intel's Pentium MMX",
+      "href": "https://pikuma.com/blog/programming-intel-pentium-mmx-simd",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "Applying a photosynthetic process to treat “dry eye”",
+      "href": "https://www.science.org/content/blog-post/taking-tip-plants-eyes",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "Prolly: A content-addressed ordered map built on prolly trees",
+      "href": "https://github.com/crabbuild/prolly",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "Interview with Amit Patel, Creator of “Solar Realms Elite” (2013)",
+      "href": "https://breakintochat.com/blog/2013/02/18/amit-patel-creator-of-solar-realms-elite/",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "Design 3D-printable parts by talking",
+      "href": "https://nurb.dev/",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "Dancing with friends and enemies: boids' swarm intelligence (2012)",
+      "href": "https://community.wolfram.com/groups/-/m/t/122095",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "Strong gravitational lensing and microlensing of supernovae (2024)",
+      "href": "https://infoscience.epfl.ch/entities/publication/644cad8a-6c9b-4b02-bcf3-b8b6e8c614c5",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "$12B of US ratepayers' money wasted on a modeling mistake in PJM",
+      "href": "https://newsletter.semianalysis.com/p/12b-of-us-ratepayers-money-wasted",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "The AI Credit Resale Economy",
+      "href": "https://vectoral.com/blog/who-are-the-token-brokers",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "The Life and Death of Direct File [pdf]",
+      "href": "https://www.ischool.berkeley.edu/sites/default/files/vinton_report_5.pdf",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "Protobuf has LSP support",
+      "href": "https://buf.build/blog/protobuf-lsp",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "MathCode, Mathematical Coding Agent",
+      "href": "https://math-ai-org.github.io/mathcode/",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "Red queen hypothesis – A new way forward for self-improving AI",
+      "href": "https://www.cst.cam.ac.uk/news/red-queen-hypothesis-new-way-forward-self-improving-ai",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "Tell HN: Cloudflare silently injects its analytics when you switch nameservers",
+      "href": "item?id=49322107",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "Stripe will reportedly acquire OpenRouter for $7B+",
+      "href": "https://techcrunch.com/2026/08/16/stripe-will-reportedly-acquire-ai-gateway-startup-openrouter-for-7b/",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
+    },
+    {
+      "text": "Plastic mechanical computer from 1963: The Digi-Comp 1 [video]",
+      "href": "https://www.youtube.com/watch?v=-y8bGBE71yw",
+      "input": {
+        "url": "https://news.ycombinator.com",
+        "selector": "tr.athing"
+      }
   }
 ]
+
+```
 
 🏗️ Architecture
 scrape-verse/
@@ -157,7 +403,7 @@ Vercel account
 pkg update -y && pkg upgrade -y
 pkg install -y nodejs-lts chromium git
 
-git clone <your-repo-url> scrape-verse
+git clone https://github.com/anuragkumar033198-beep/scrape-verse-edge.git scrape-verse
 cd scrape-verse/termux-backend
 
 npm install
