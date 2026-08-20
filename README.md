@@ -425,13 +425,13 @@ npm start
 
 **2. Expose the backend with a tunnel**
 ```bash
-cd scrape-verse/termux-backend
+cd ~/scrape-verse/termux-backend
 npm run tunnel
 ```
 
 **3. Frontend (Vercel)**
 ```bash
-cd scrape-verse/vercel-frontend
+cd ~/scrape-verse/vercel-frontend
 npx vercel@latest --prod
 ```
 
