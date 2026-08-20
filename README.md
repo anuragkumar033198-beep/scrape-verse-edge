@@ -39,6 +39,7 @@ doesn't wait for a human to notice and patch a selector:
    reasoning, and final structured records.
 
 ## 🗺️ Workflow
+```text
 ┌─────────────────────┐        ┌───────────────┐        ┌──────────────────────────────┐
 │  Vercel PWA          │  WS/   │  Localtunnel  │  HTTP  │  Termux Edge Worker            │
 │  Dashboard            │◄──────►│  (public URL) │◄──────►│  (Android tablet)              │
@@ -58,6 +59,7 @@ pulled, session state                                       │  Gemini / OpenAI
 │  Studio Collector         │
 │  (production extraction) │
 └─────────────────────────┘
+```
 
 **Frontend → Localtunnel → Termux Backend → Gemini Healing → Bright Data**
 
@@ -391,15 +393,18 @@ if the selected one's API key isn't configured.
 Compliant backoff on rate-limiting — exponential backoff + jitter,
 optional authorized proxy rotation. No device-level network evasion.
 
-🚀 Setup & installation
-Prerequisites
-Android device with Termux
-Node.js 18+ (pkg install nodejs-lts)
-Chromium in Termux (pkg install chromium)
-Bright Data account with a published Scraper Studio collector
-OpenAI and/or Gemini API key
-Vercel account
-1. Backend (Termux)
+## 🚀 Setup & installation
+
+**Prerequisites**
+* Android device with Termux
+* Node.js 18+ (`pkg install nodejs-lts`)
+* Chromium in Termux (`pkg install chromium`)
+* Bright Data account with a published Scraper Studio collector
+* OpenAI and/or Gemini API key
+* Vercel account
+
+**1. Backend (Termux)**
+```bash
 pkg update -y && pkg upgrade -y
 pkg install -y nodejs-lts chromium git
 
@@ -410,31 +415,37 @@ npm install
 
 cp .env.example .env
 nano .env
-# Fill in ALLOWED_ORIGINS, OPENAI_API_KEY/GEMINI_API_KEY,
-# BRIGHTDATA_API_TOKEN, BRIGHTDATA_COLLECTOR_ID
+```
 
+(Fill in ALLOWED_ORIGINS, OPENAI_API_KEY/GEMINI_API_KEY, BRIGHTDATA_API_TOKEN, BRIGHTDATA_COLLECTOR_ID)
+```bash
 termux-wake-lock
 npm start
-2. Expose the backend with a tunnel
+```
+
+**2. Expose the backend with a tunnel**
+```bash
 cd scrape-verse/termux-backend
 npm run tunnel
-3. Frontend (Vercel)
+```
+
+**3. Frontend (Vercel)**
+```bash
 cd scrape-verse/vercel-frontend
 npx vercel@latest --prod
-4. Run it
-Paste the tunnel URL into the dashboard's Edge Endpoint field, enter a
-target URL, tap Run Scraper.
+```
 
-🧩 Tech stack
+**4. Run it**
+Paste the tunnel URL into the dashboard's Edge Endpoint field, enter a target URL, and tap Run Scraper.
 
-Layer                   Tech
-Frontend               Vanilla JS PWA, Socket.io client, service worker
-Backend                Node.js, Express, Socket.io
-Browser automation     Puppeteer-core (system Chromium)
-Selector healing       Gemini / OpenAI
-Structured extraction  Bright Data Scraper Studio
-Tunnel                 localtunnel (self-reconnecting)
-Hosting                Vercel + Termux/Android
+##  ​🧩 Tech stack
+​* Frontend: Vanilla JS PWA, Socket.io client, service worker
+* ​Backend: Node.js, Express, Socket.io
+​* Browser automation: Puppeteer-core (system Chromium)
+​* Selector healing: Gemini / OpenAI
+​* Structured extraction: Bright Data Scraper Studio
+​* Tunnel: localtunnel (self-reconnecting)
+​* Hosting: Vercel + Termux/Android
 
 ## 📄 License
 
