@@ -439,13 +439,14 @@ npx vercel@latest --prod
 Paste the tunnel URL into the dashboard's Edge Endpoint field, enter a target URL, and tap Run Scraper.
 
 ##  ​🧩 Tech stack
-​* Frontend: Vanilla JS PWA, Socket.io client, service worker
-* ​Backend: Node.js, Express, Socket.io
-​* Browser automation: Puppeteer-core (system Chromium)
-​* Selector healing: Gemini / OpenAI
-​* Structured extraction: Bright Data Scraper Studio
-​* Tunnel: localtunnel (self-reconnecting)
-​* Hosting: Vercel + Termux/Android
+
+* Frontend: Vanilla JS PWA, Socket.io client, service worker
+* Backend: Node.js, Express, Socket.io
+* Browser automation: Puppeteer-core (system Chromium)
+* Selector healing: Gemini / OpenAI
+* Structured extraction: Bright Data Scraper Studio
+* Tunnel: localtunnel (self-reconnecting)
+* Hosting: Vercel + Termux/Android
 
 ## 📄 License
 
